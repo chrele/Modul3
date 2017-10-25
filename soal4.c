@@ -5,15 +5,23 @@
 #include <pthread.h>
 
 pthread_t tid[100];
-int N, T;
 int status=0;
+int arr[100];
 
-void* faktorial (void *arg, ){
+int faktorial(int arr[i]){
+    int z, k;
+    z=arr[i];
+    for(k=1; k<=z; k++) 
+	z=z*k;
+    return z;
+}
+
+void* show (void *arg){
     int i, j;
     pthread_t id=pthread_self();
     for(i=1; i<x; i++){
         if(pthread_equal(id,tid[i])){
-	    
+	    printf("%d", faktorial(arr[i]);
 	}
     }
 }
