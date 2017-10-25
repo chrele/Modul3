@@ -7,38 +7,38 @@
 pthread_t tid[100];
 int status=0;
 int arr[100];
+int x;
 
-int faktorial(int arr[i]){
-    int z, k;
-    z=arr[i];
-    for(k=1; k<=z; k++) 
-	z=z*k;
-    return z;
-}
-
-void* show (void *arg){
+void* faktorial (void *arg){
     int i, j;
     pthread_t id=pthread_self();
-    for(i=1; i<x; i++){
+    for(i=1; i<=x; i++){
         if(pthread_equal(id,tid[i])){
-	    printf("%d", faktorial(arr[i]);
+	    int z, k;
+    	    z=arr[i];
+    	    for(k=1; k<=z; k++) 
+		z=z*k;
+	    printf("%d ", z);
 	}
     }
 }
 
 int main(int argc, char **argv)
 {
-    int i, num;
-    x=0;
+    int i,j, num;
+    x=1;
     while(1){
        if(argv[x+1]==NULL) break;
        num = atoi(argv[x+1]);
        arr[x] = num;
        x++; 
     } 
-    for(i=1; i<x; i++){
+    for(i=1; i<=x; i++){
        pthread_create (&tid[i], NULL, &faktorial, NULL);
+    }
+    for(j=1; j<=x; j++){
+       pthread_join(tid[j], NULL);
     }
     printf("\n");
     return 0;
-}        
+}
