@@ -8,24 +8,26 @@ pthread_t pt1;
 pthread_t pt2;
 pthread_t pt3;
 
-int lohanstat=100;
-int crabstat=100;
+int lohanstat=0;
+int crabstat=0;
 int choice=0;
 
-void* bgcrab(void *arg){
-	for(lohanstat;lohanstat>0 && lohanstat<=100; lohanstat=lohanstat-15){
+void* bglohan(void *arg){
+	for(lohanstat=100;lohanstat>0; lohanstat=lohanstat-15){
 		sleep(10);
 		printf("Crab's stat: %d\n", crabstat);
 		printf("Lohan's stat: %d\n", lohanstat);
+		if(lohanstat>100)exit(1);
 	}
 	exit(1);
 }
 
-void* bglohan(void *arg){
-	for(crabstat;crabstat>0 && crabstat<=100; crabstat=crabstat-10){
+void* bgcrab(void *arg){
+	for(crabstat=100;crabstat>0; crabstat=crabstat-10){
 		sleep(20);
 		printf("Crab's stat: %d\n", crabstat);
 		printf("Lohan's stat: %d\n", lohanstat);
+		if(crabstat>100)exit(1);
 	}
 	exit(1);
 }
@@ -40,13 +42,13 @@ void* fore(void *arg){
 		printf("Your choice: ");scanf("%d", &choice);
 		if(choice==1){
 			crabstat+=10;
-			printf("Crab's stat: %d\n", crabstat);
-			printf("Lohan's stat: %d\n", lohanstat);
+			//printf("Crab's stat: %d\n", crabstat);
+			//printf("Lohan's stat: %d\n", lohanstat);
 		}
 		else if(choice==2){
 			lohanstat+=10;
-			printf("Crab's stat: %d\n", crabstat);
-			printf("Lohan's stat: %d\n", lohanstat);
+			//printf("Crab's stat: %d\n", crabstat);
+			//printf("Lohan's stat: %d\n", lohanstat);
 		}
 		else if(choice==3){
 			exit(1);
